@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "turingos"
+version = "0.1.0"
+description = "A reference implementation of an AI Turing Machine OS with white-box control and black-box workers."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "OpenAI ChatGPT" }
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["turingos*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "steps": 17,
+  "selected_agents": [
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha",
+    "alpha"
+  ],
+  "diagnostics": {
+    "task": {
+      "expected_answer": "odd",
+      "numeric_files": [
+        "1/100.md",
+        "2/200.md",
+        "3/300.md",
+        "32342323.md"
+      ],
+      "result": "odd",
+      "parity": "1"
+    },
+    "ledger_ok": true,
+    "price_ranking": [
+      [
+        "alpha",
+        1.3490196078431373
+      ],
+      [
+        "noise-2",
+        -0.05686274509803923
+      ],
+      [
+        "noise-1",
+        -0.07843137254901965
+      ],
+      [
+        "noise-3",
+        -0.11862745098039214
+      ]
+    ],
+    "public_broadcasts": [
+      "典型错误：停机判定错误。",
+      "典型错误：写入内容与白盒规则不一致。",
+      "典型错误：状态寄存器 q' 漂移。",
+      "典型错误：读写头移动到了错误路径。"
+    ]
+  }
+}
