@@ -1,0 +1,18 @@
+{
+  "mission": "Mission 002",
+  "mode_summaries": [
+    {
+      "attempted": 2,
+      "consecutive_pass_before_first_fail": 1,
+      "failed": 1,
+      "first_fail_artifact": "benchmarks/mission002/mission002_dual_rung3_promptv5_20260310_133108UTC/turingosv2_planner27_worker9/case_000002/case_result.json",
+      "first_non_pass_case": 2,
+      "mode": "turingosv2_planner27_worker9",
+      "passed": 1,
+      "reason": "no valid proposal at step 2: wrong_path:expected next_path=n_08_222.md, got dir_00_27/.ls; wrong_register:next_register diverged from expected policy",
+      "status": "FAIL"
+    }
+  ],
+  "output_dir": "benchmarks/mission002/mission002_dual_rung3_promptv5_20260310_133108UTC",
+  "run_name": "mission002_dual_rung3_promptv5_20260310_133108UTC"
+}

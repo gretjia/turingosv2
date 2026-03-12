@@ -1,0 +1,13 @@
+[package]
+name = "turingos-observe"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+turingos-adapter = { path = "../turingos-adapter" }
+turingos-core = { path = "../turingos-core" }
+turingos-kernel = { path = "../turingos-kernel" }
+
+[dev-dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

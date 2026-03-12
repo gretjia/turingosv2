@@ -1,0 +1,18 @@
+{
+  "mission": "Mission 002",
+  "mode_summaries": [
+    {
+      "attempted": 4,
+      "consecutive_pass_before_first_fail": 3,
+      "failed": 1,
+      "first_fail_artifact": "benchmarks/mission002/mission002_dual_rung10_promptv9_mt768_20260310_1943UTC/turingosv2_planner27_worker9/case_000004/case_result.json",
+      "first_non_pass_case": 4,
+      "mode": "turingosv2_planner27_worker9",
+      "passed": 3,
+      "reason": "no valid proposal at step 15: wrong_path:expected next_path=dir_01_31/dir_02_30/n_02_536.md, got parity.md; wrong_register:next_register diverged from expected policy",
+      "status": "FAIL"
+    }
+  ],
+  "output_dir": "benchmarks/mission002/mission002_dual_rung10_promptv9_mt768_20260310_1943UTC",
+  "run_name": "mission002_dual_rung10_promptv9_mt768_20260310_1943UTC"
+}

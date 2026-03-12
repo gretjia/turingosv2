@@ -1,0 +1,18 @@
+{
+  "mission": "Mission 002",
+  "mode_summaries": [
+    {
+      "attempted": 1,
+      "consecutive_pass_before_first_fail": 1,
+      "failed": 0,
+      "first_fail_artifact": null,
+      "first_non_pass_case": null,
+      "mode": "turingosv2_planner27_worker9",
+      "passed": 1,
+      "reason": "",
+      "status": "PASS"
+    }
+  ],
+  "output_dir": "benchmarks/mission002/mission002_dual_case1_promptv5_20260310_1202UTC",
+  "run_name": "mission002_dual_case1_promptv5_20260310_1202UTC"
+}

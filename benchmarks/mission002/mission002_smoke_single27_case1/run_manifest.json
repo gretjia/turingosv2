@@ -1,0 +1,69 @@
+{
+  "argv": [
+    "/home/zephryj/projects/turingosv2/turingos/cli.py",
+    "benchmark-mission002",
+    "--modes",
+    "turingosv2_single_27b",
+    "--max-cases",
+    "1",
+    "--run-name",
+    "mission002_smoke_single27_case1",
+    "--clean",
+    "--qwen27-base-url",
+    "http://127.0.0.1:28080",
+    "--qwen27-model",
+    "qwen3.5-27b-instruct-q4_k_m.gguf",
+    "--qwen9-base-url",
+    "http://127.0.0.1:28081",
+    "--qwen9-model",
+    "Qwen3.5-9B-Q4_K_M.gguf",
+    "--timeout-seconds",
+    "90",
+    "--retry-budget",
+    "1",
+    "--max-tokens",
+    "512"
+  ],
+  "endpoint_manifest": {
+    "qwen27": {
+      "base_url": "http://127.0.0.1:28080",
+      "max_retries": 1,
+      "max_tokens": 512,
+      "model": "qwen3.5-27b-instruct-q4_k_m.gguf",
+      "timeout_seconds": 90.0
+    },
+    "qwen9": {
+      "base_url": "http://127.0.0.1:28081",
+      "max_retries": 1,
+      "max_tokens": 512,
+      "model": "Qwen3.5-9B-Q4_K_M.gguf",
+      "timeout_seconds": 90.0
+    }
+  },
+  "generator_version": "mission002.parity.v1",
+  "global_seed": 20260308,
+  "max_cases": 1,
+  "max_steps": 64,
+  "mission": "Mission 002",
+  "modes": [
+    "turingosv2_single_27b"
+  ],
+  "preflight_models": {
+    "qwen27": {
+      "available_models": [
+        "qwen3.5-27b-instruct-q4_k_m.gguf"
+      ],
+      "base_url": "http://127.0.0.1:28080",
+      "declared_model": "qwen3.5-27b-instruct-q4_k_m.gguf"
+    },
+    "qwen9": {
+      "available_models": [
+        "Qwen3.5-9B-Q4_K_M.gguf"
+      ],
+      "base_url": "http://127.0.0.1:28081",
+      "declared_model": "Qwen3.5-9B-Q4_K_M.gguf"
+    }
+  },
+  "run_name": "mission002_smoke_single27_case1",
+  "start_case": 1
+}

@@ -1,0 +1,75 @@
+[features]
+multi_agent = true
+child_agents_md = true
+
+[agents.turingos_plan]
+description = "TuringOSv2 project-scoped planning child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+config_file = ".codex/agents/turingos_plan.toml"
+
+[agents.turingos_coder]
+description = "TuringOSv2 project-scoped bounded coding child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+config_file = ".codex/agents/turingos_coder.toml"
+
+[agents.turingos_rust_systems_architect]
+description = "TuringOSv2 Groundhog Rust systems architect child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+config_file = ".codex/agents/turingos_rust_systems_architect.toml"
+
+[agents.turingos_rust_coder]
+description = "TuringOSv2 Groundhog Rust implementation child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+config_file = ".codex/agents/turingos_rust_coder.toml"
+
+[agents.turingos_os_system_planner]
+description = "TuringOSv2 project-scoped OS systems planner and Linux best-practice auditor"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+config_file = ".codex/agents/turingos_os_system_planner.toml"
+
+[agents.turingos_git_historian]
+description = "TuringOSv2 Groundhog git historian and provenance-planning child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+config_file = ".codex/agents/turingos_git_historian.toml"
+
+[agents.turingos_karpathy_editor]
+description = "TuringOSv2 Groundhog simplification and code-aesthetic review child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+config_file = ".codex/agents/turingos_karpathy_editor.toml"
+
+[agents.turingos_recursive_software_auditor]
+description = "TuringOSv2 Groundhog recursive software-engineering closure auditor"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+config_file = ".codex/agents/turingos_recursive_software_auditor.toml"
+
+[agents.turingos_quality_auditor]
+description = "TuringOSv2 project-scoped regression and quality auditor"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+config_file = ".codex/agents/turingos_quality_auditor.toml"
+
+[agents.turingos_researcher]
+description = "TuringOSv2 project-scoped official-docs and primary-source research child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+config_file = ".codex/agents/turingos_researcher.toml"
+
+[agents.turingos_runtime_watcher]
+description = "TuringOSv2 project-scoped long-run watcher child agent"
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+config_file = ".codex/agents/turingos_runtime_watcher.toml"
+
+[agents.turingos_goal_poller]
+description = "TuringOSv2 project-scoped target and rung poller for benchmark loops"
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+config_file = ".codex/agents/turingos_goal_poller.toml"

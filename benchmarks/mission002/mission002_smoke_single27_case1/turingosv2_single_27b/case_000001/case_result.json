@@ -1,0 +1,129 @@
+{
+  "agent_traces": {
+    "qwen27": [
+      {
+        "current_path": ".ls",
+        "infra_error": null,
+        "parse_error": "Expecting value: line 1 column 1 (char 0)",
+        "parsed": false,
+        "raw_response": "",
+        "request_payload": {
+          "max_tokens": 512,
+          "messages": [
+            {
+              "content": "You are participating in Mission 002 of the TuringOSv2 pure-baseline benchmark.\nYou are the worker lane for a TuringOS baseline benchmark. Optimize for exact current-step correctness. Do not speculate beyond the visible state.\nReturn exactly one JSON object and nothing else.\nRequired JSON keys:\n- \"next_register\": object\n- \"next_path\": string\n- \"write_mode\": \"keep\" or \"overwrite\"\n- \"write_content\": string or null\n- \"halt\": boolean\n- \"notes\": string\nRules:\n- next_register must be the full q' register, not a diff.\n- Do not omit any required key.\n- If write_mode is keep, set write_content to null.\n- Do not use markdown fences.\n- Do not explain your answer.",
+              "role": "system"
+            },
+            {
+              "content": "{\n  \"prompt_version\": \"mission002.prompt.v1\",\n  \"required_output_schema\": {\n    \"halt\": {\n      \"type\": \"boolean\"\n    },\n    \"next_path\": {\n      \"type\": \"string\"\n    },\n    \"next_register\": {\n      \"type\": \"object\"\n    },\n    \"notes\": {\n      \"type\": \"string\"\n    },\n    \"write_content\": {\n      \"type\": [\n        \"string\",\n        \"null\"\n      ]\n    },\n    \"write_mode\": {\n      \"enum\": [\n        \"keep\",\n        \"overwrite\"\n      ]\n    }\n  },\n  \"role_name\": \"worker\",\n  \"visible_state\": {\n    \"agent_id\": \"qwen27\",\n    \"current_content\": \"DIR dir_00_43\\nDIR dir_01_89\",\n    \"price_hint\": \"neutral\",\n    \"private_feedback\": [],\n    \"public_broadcasts\": [],\n    \"state\": {\n      \"current_path\": \".ls\",\n      \"halted\": false,\n      \"register\": {\n        \"answer\": null,\n        \"completed\": [],\n        \"files\": {\n          \"parity\": \"parity.md\",\n          \"result\": \"result.md\",\n          \"root_listing\": \".ls\"\n        },\n        \"pending\": null,\n        \"phase\": \"boot\",\n        \"todo\": []\n      },\n      \"step\": 0\n    }\n  }\n}",
+              "role": "user"
+            }
+          ],
+          "model": "qwen3.5-27b-instruct-q4_k_m.gguf",
+          "temperature": 0.0
+        },
+        "step": 0,
+        "transition": {
+          "halt": false,
+          "next_path": "../invalid_transition",
+          "next_register": {
+            "answer": null,
+            "completed": [],
+            "files": {
+              "parity": "parity.md",
+              "result": "result.md",
+              "root_listing": ".ls"
+            },
+            "pending": null,
+            "phase": "boot",
+            "todo": []
+          },
+          "notes": "mission002.prompt.v1: Expecting value: line 1 column 1 (char 0)",
+          "write_content": null,
+          "write_mode": "keep"
+        }
+      }
+    ]
+  },
+  "case": {
+    "case_index": 1,
+    "case_seed": 18439170449965593779,
+    "generator_version": "mission002.parity.v1",
+    "global_seed": 20260308,
+    "tree": {
+      "dir_00_43": {
+        "dir_02_98": {
+          "n_04_887.md": "709052"
+        },
+        "n_00_967.md": "544273",
+        "n_02_858.md": "321631",
+        "n_03_521.md": "559777"
+      },
+      "dir_01_89": {
+        "dir_03_57": {
+          "n_01_198.md": "42634"
+        }
+      }
+    },
+    "tree_digest": "925e6b103fbec5716890394500893f5bc7e43fe5df930efc4be668e13c60b898"
+  },
+  "error_type": "semantic_failure",
+  "ledger_tail": [],
+  "mode": "turingosv2_single_27b",
+  "reason": "no valid proposal at step 0: wrong_path:expected next_path=parity.md, got ../invalid_transition; wrong_register:next_register diverged from expected policy; path_escape:path escapes workspace: ../invalid_transition",
+  "result": null,
+  "runtime_config": {
+    "explore_epsilon": 0.0,
+    "max_steps": 64,
+    "random_seed": 18439170449965593779
+  },
+  "selected_agents": [],
+  "state": {
+    "current_path": ".ls",
+    "halted": false,
+    "register": {
+      "answer": null,
+      "completed": [],
+      "files": {
+        "parity": "parity.md",
+        "result": "result.md",
+        "root_listing": ".ls"
+      },
+      "pending": null,
+      "phase": "boot",
+      "todo": []
+    },
+    "step": 0
+  },
+  "status": "FAIL",
+  "task_diagnostics": {
+    "ledger_ok": true,
+    "price_ranking": [],
+    "public_broadcasts": [],
+    "task": {
+      "expected_answer": "odd",
+      "numeric_files": [
+        "dir_00_43/dir_02_98/n_04_887.md",
+        "dir_00_43/n_00_967.md",
+        "dir_00_43/n_02_858.md",
+        "dir_00_43/n_03_521.md",
+        "dir_01_89/dir_03_57/n_01_198.md"
+      ],
+      "parity": "",
+      "result": ""
+    }
+  },
+  "workspace_snapshot": {
+    ".ls": "DIR dir_00_43\nDIR dir_01_89",
+    "dir_00_43/.ls": "DIR dir_02_98\nFILE n_00_967.md\nFILE n_02_858.md\nFILE n_03_521.md",
+    "dir_00_43/dir_02_98/.ls": "FILE n_04_887.md",
+    "dir_00_43/dir_02_98/n_04_887.md": "709052",
+    "dir_00_43/n_00_967.md": "544273",
+    "dir_00_43/n_02_858.md": "321631",
+    "dir_00_43/n_03_521.md": "559777",
+    "dir_01_89/.ls": "DIR dir_03_57",
+    "dir_01_89/dir_03_57/.ls": "FILE n_01_198.md",
+    "dir_01_89/dir_03_57/n_01_198.md": "42634",
+    "ledger.jsonl": ""
+  }
+}

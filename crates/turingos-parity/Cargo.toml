@@ -1,0 +1,9 @@
+[package]
+name = "turingos-parity"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+turingos-core = { path = "../turingos-core" }
+turingos-kernel = { path = "../turingos-kernel" }
+turingos-adapter = { path = "../turingos-adapter" }

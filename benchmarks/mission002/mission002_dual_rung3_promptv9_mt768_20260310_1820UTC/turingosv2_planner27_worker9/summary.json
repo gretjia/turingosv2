@@ -1,0 +1,11 @@
+{
+  "attempted": 3,
+  "consecutive_pass_before_first_fail": 3,
+  "failed": 0,
+  "first_fail_artifact": null,
+  "first_non_pass_case": null,
+  "mode": "turingosv2_planner27_worker9",
+  "passed": 3,
+  "reason": "",
+  "status": "PASS"
+}

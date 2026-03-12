@@ -1,0 +1,11 @@
+{
+  "attempted": 1,
+  "consecutive_pass_before_first_fail": 0,
+  "failed": 1,
+  "first_fail_artifact": "benchmarks/mission002/mission002_smoke_single27_case1/turingosv2_single_27b/case_000001/case_result.json",
+  "first_non_pass_case": 1,
+  "mode": "turingosv2_single_27b",
+  "passed": 0,
+  "reason": "no valid proposal at step 0: wrong_path:expected next_path=parity.md, got ../invalid_transition; wrong_register:next_register diverged from expected policy; path_escape:path escapes workspace: ../invalid_transition",
+  "status": "FAIL"
+}

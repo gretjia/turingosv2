@@ -1,0 +1,11 @@
+{
+  "attempted": 1,
+  "consecutive_pass_before_first_fail": 0,
+  "failed": 1,
+  "first_fail_artifact": "benchmarks/mission002/mission002_dual_case1_promptv4_20260310_1134UTC/turingosv2_planner27_worker9/case_000001/case_result.json",
+  "first_non_pass_case": 1,
+  "mode": "turingosv2_planner27_worker9",
+  "passed": 0,
+  "reason": "no valid proposal at step 12: wrong_register:next_register diverged from expected policy",
+  "status": "FAIL"
+}

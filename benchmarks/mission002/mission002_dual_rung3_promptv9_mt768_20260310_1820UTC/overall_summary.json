@@ -1,0 +1,18 @@
+{
+  "mission": "Mission 002",
+  "mode_summaries": [
+    {
+      "attempted": 3,
+      "consecutive_pass_before_first_fail": 3,
+      "failed": 0,
+      "first_fail_artifact": null,
+      "first_non_pass_case": null,
+      "mode": "turingosv2_planner27_worker9",
+      "passed": 3,
+      "reason": "",
+      "status": "PASS"
+    }
+  ],
+  "output_dir": "benchmarks/mission002/mission002_dual_rung3_promptv9_mt768_20260310_1820UTC",
+  "run_name": "mission002_dual_rung3_promptv9_mt768_20260310_1820UTC"
+}

@@ -21,7 +21,7 @@ package-dir = {"" = "."}
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["turingos*"]
+include = ["turingos*", "harnesses*"]
 
 [tool.pytest.ini_options]
 addopts = "-q"

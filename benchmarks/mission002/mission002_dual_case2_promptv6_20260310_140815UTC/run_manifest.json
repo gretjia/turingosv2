@@ -1,0 +1,108 @@
+{
+  "argv": [
+    "/home/zephryj/projects/turingosv2/turingos/cli.py",
+    "benchmark-mission002",
+    "--modes",
+    "turingosv2_planner27_worker9",
+    "--start-case",
+    "2",
+    "--max-cases",
+    "1",
+    "--global-seed",
+    "20260308",
+    "--generator-version",
+    "mission002.parity.v1",
+    "--max-steps",
+    "64",
+    "--output-root",
+    "./benchmarks/mission002",
+    "--run-name",
+    "mission002_dual_case2_promptv6_20260310_140815UTC",
+    "--clean",
+    "--qwen27-base-url",
+    "http://127.0.0.1:18082",
+    "--qwen27-model",
+    "qwen3.5-27b-instruct-q4_k_m.gguf",
+    "--qwen27-api-key",
+    "local",
+    "--qwen9-base-url",
+    "http://127.0.0.1:18083",
+    "--qwen9-model",
+    "Qwen3.5-9B-Q4_K_M.gguf",
+    "--qwen9-api-key",
+    "local",
+    "--timeout-seconds",
+    "60",
+    "--retry-budget",
+    "1",
+    "--max-tokens",
+    "512",
+    "--topology-host-alias",
+    "zephrymac-studio",
+    "--qwen27-remote-target",
+    "127.0.0.1:8080",
+    "--qwen9-remote-target",
+    "127.0.0.1:8081",
+    "--qwen27-launch-flags",
+    "--host 127.0.0.1 --port 8080 -c 16384 --reasoning-format none --reasoning-budget 0",
+    "--qwen9-launch-flags",
+    "--host 127.0.0.1 --port 8081 -c 8192 --reasoning-format none --reasoning-budget 0",
+    "--topology-notes",
+    "omega-vm runner plus ssh local forwards 18082->8080 and 18083->8081; prompt v6 bounded rerun of first failing rung-3 case_000002 under unchanged kernel/topology after explicit same-batch FILE-before-DIR clarification",
+    "--repo-revision",
+    "d9f0357e0ce9d2843a06d2a3d25ee342b2dfce85"
+  ],
+  "endpoint_manifest": {
+    "qwen27": {
+      "base_url": "http://127.0.0.1:18082",
+      "max_retries": 1,
+      "max_tokens": 512,
+      "model": "qwen3.5-27b-instruct-q4_k_m.gguf",
+      "timeout_seconds": 60.0
+    },
+    "qwen9": {
+      "base_url": "http://127.0.0.1:18083",
+      "max_retries": 1,
+      "max_tokens": 512,
+      "model": "Qwen3.5-9B-Q4_K_M.gguf",
+      "timeout_seconds": 60.0
+    }
+  },
+  "generator_version": "mission002.parity.v1",
+  "global_seed": 20260308,
+  "max_cases": 1,
+  "max_steps": 64,
+  "mission": "Mission 002",
+  "modes": [
+    "turingosv2_planner27_worker9"
+  ],
+  "preflight_models": {
+    "qwen27": {
+      "available_models": [
+        "qwen3.5-27b-instruct-q4_k_m.gguf"
+      ],
+      "base_url": "http://127.0.0.1:18082",
+      "declared_model": "qwen3.5-27b-instruct-q4_k_m.gguf"
+    },
+    "qwen9": {
+      "available_models": [
+        "Qwen3.5-9B-Q4_K_M.gguf"
+      ],
+      "base_url": "http://127.0.0.1:18083",
+      "declared_model": "Qwen3.5-9B-Q4_K_M.gguf"
+    }
+  },
+  "prompt_version": "mission002.prompt.v6",
+  "repo_revision": "d9f0357e0ce9d2843a06d2a3d25ee342b2dfce85",
+  "run_name": "mission002_dual_case2_promptv6_20260310_140815UTC",
+  "start_case": 2,
+  "topology_manifest": {
+    "host_alias": "zephrymac-studio",
+    "notes": "omega-vm runner plus ssh local forwards 18082->8080 and 18083->8081; prompt v6 bounded rerun of first failing rung-3 case_000002 under unchanged kernel/topology after explicit same-batch FILE-before-DIR clarification",
+    "qwen27_launch_flags": "--host 127.0.0.1 --port 8080 -c 16384 --reasoning-format none --reasoning-budget 0",
+    "qwen27_remote_target": "127.0.0.1:8080",
+    "qwen9_launch_flags": "--host 127.0.0.1 --port 8081 -c 8192 --reasoning-format none --reasoning-budget 0",
+    "qwen9_remote_target": "127.0.0.1:8081",
+    "windows1_participated": false
+  }
+}

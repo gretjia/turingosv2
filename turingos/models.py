@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
@@ -19,9 +20,27 @@ class MachineState:
         return MachineState(
             step=self.step,
             current_path=self.current_path,
-            register={**self.register},
+            register=copy.deepcopy(self.register),
             halted=self.halted,
         )
+
+    def frozen(self) -> "FrozenMachineState":
+        return FrozenMachineState(
+            step=self.step,
+            current_path=self.current_path,
+            register=copy.deepcopy(self.register),
+            halted=self.halted,
+        )
+
+
+@dataclass(slots=True)
+class FrozenMachineState:
+    """Immutable snapshot passed across the black-box boundary."""
+
+    step: int
+    current_path: str
+    register: dict[str, Any]
+    halted: bool = False
 
 
 @dataclass(slots=True)
@@ -53,11 +72,8 @@ class AgentView:
     """Masked context visible to a worker."""
 
     agent_id: str
-    state: MachineState
+    state: FrozenMachineState
     current_content: str
-    public_broadcasts: list[str] = field(default_factory=list)
-    private_feedback: list[str] = field(default_factory=list)
-    price_hint: str = "neutral"
 
 
 @dataclass(slots=True)

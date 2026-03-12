@@ -1,0 +1,768 @@
+# Latest
+
+Date: 2026-03-12 UTC
+Status: Mission Groundhog Stage 001 now exists as a reviewed pre-implementation design-freeze packet under the sealed Final Clockwork constitution and is ready for human confirmation before any Stage 002 code work opens.
+
+## Current State
+
+- A new active mission charter is now open for the first Final Clockwork pre-implementation freeze:
+  - `handover/ops/ACTIVE_MISSION_CHARTER.md`
+  - mission name: `Mission Groundhog - Final Clockwork Embodiment Stage 001 - pre-implementation design freeze`
+  - scope: documentation and audit only; no implementation edits are authorized yet
+- A reviewed Stage 001 packet now exists:
+  - `handover/ops/MISSION_GROUNDHOG_CLOCKWORK_STAGE_001_SPEC_DRAFT.md`
+  - the packet has been audited by the current multi-agent review ring
+  - final review state before human confirmation:
+    - mathematical fidelity: `PASS`
+    - topology and OS boundary discipline: `PASS`
+    - minimalism and code-architecture sharpness: findings folded, no remaining material blocker
+    - stage-loop and sequencing discipline: `PASS`
+  - the reviewed packet now freezes:
+    - only the sealed constitution as mathematical authority
+    - Stage 001 as docs-only and non-autonomous
+    - Stage 002 opening on the initialization boundary
+    - `clock`, `mr_map`, and `mr_reduce` as trusted WHITEBOX stages
+    - `P` and `mr` as once-only `initAI` outputs
+    - reject as exact prior `Q_t`
+    - `HALT` only through committed `q_{t+1} == "halt"`
+- The sealed Final Clockwork graph was then refined so that `law` now visually lives inside the `Initialization` subgraph with `human` and `initAI`.
+  - a focused constitution-first re-audit was run against the active charter and Stage 001 spec
+  - result: no material change to Stage 001 boundary decisions
+  - why: the causal law was unchanged; `law` was already treated as the once-only human WHITEBOX initialization input, while `P` and `mr` remain once-only `initAI` outputs
+- This turn changed only the mission-opening and handover documents; no implementation code under `crates/`, `turingos/`, or `harnesses/` was edited in this stage-opening pass.
+- Fixed memory rule at the top of the current pressure-test work:
+  - never hard-code for the sake of passing the benchmark corpus
+  - every accepted change must push `turingosv2` toward earlier contact with real-world difficulty, not hide from it
+  - upgrade decisions must be grounded in compressed historical success and failure data, not in expert guesswork alone
+  - AgentOS exists to help `turingosv2` itself give rise to bounded project intelligence; AgentOS models are intelligent too, but they are not the intended permanent substitute thinker for the system
+- The sealed Groundhog constitution has been directly updated by human instruction:
+  - `bible/GROUNDHOG_SEALED_CONSTITUTION.md` now seals the new `Final Clockwork Edition`
+  - it now includes:
+    - one-time `Human Architect -> law -> Init AI -> predicates + mr`
+    - global `clock`
+    - `mr_map` driven read phase
+    - `mr_reduce ∘ wtool(...)` write phase
+    - `tools_other` constitutionally exiled into the bottom write path
+    - explicit `HALT`
+  - the earlier Groundhog `Topological & Atomic Edition` is no longer the active constitutional authority
+- Remaining active `handover/ops` guidance has been synchronized to the new Clockwork authority:
+  - `handover/ops/TURINGOSV2_CONSTITUTIONAL_INTERPRETATION_LONG_HORIZON_AND_MULTIAGENT_20260311.md`
+  - `handover/ops/TURINGOSV2_RUST_ONLY_MIGRATION_PLAN_20260311.md`
+  - `handover/ops/TURINGOSV2_RUST_ONLY_BLUEPRINT_AUDITED_20260311.md`
+  - these now cite:
+    - once-only `Human_Architect -> law -> initAI -> predicates + mr`
+    - `clock -> mr_map -> rtool -> input -> delta -> output -> product predicates`
+    - `mr_reduce ∘ wtool(output | tape_t, HEAD_t, tools_other)` on pass
+    - exact prior `Q_t` on reject
+  - `handover/ops/TURINGOSV2_CONSTITUTION_TOPOLOGY_ALIGNMENT_AUDIT_20260311.md` is now explicitly marked as a historical pre-Clockwork audit record rather than a current authority-bearing guide
+  - a final systems-line residual was also fixed:
+    - the Rust-only migration plan and audited blueprint no longer summarize the trusted Rust shape with the older serial core list alone
+    - they now include Clockwork-first stages:
+      - initialization
+      - clock
+      - `mr_map`
+      - predicate product
+      - `wtool` plus `tools_other`
+      - `mr_reduce`
+      - finalization / `HALT`
+- A fresh multi-agent code diff audit now exists against the sealed Final Clockwork constitution only:
+  - `handover/ops/TURINGOSV2_FINAL_CLOCKWORK_CODE_DIFF_AUDIT_20260311.md`
+  - verdict: `PASS WITH FIXES`
+  - strongest preserved alignment:
+    - the Rust theorem-bearing core still keeps BLACKBOX proposal suspended and prevents direct write of future world state
+    - `WorldState<QState>` still cleanly carries the whitebox world triple
+  - strongest missing Clockwork surfaces:
+    - no once-only `Human -> law -> initAI -> predicates + mr` embodiment
+    - no explicit `clock`
+    - no explicit `mr_map / mr_reduce`
+    - no explicit constitutional `tools_other` awakening inside the bottom write path
+    - no explicit generic `HALT` surface tied to committed `q_{t+1}`
+  - multi-agent review outcome:
+    - math, topology, Unix, and systems review all converged on `PASS WITH FIXES`
+    - no implementation code was changed in that audit; it is a diff-and-upgrade-plan record only
+- The derived AI-readable rewrite has been updated to match the new sealed source without using `∘ / •`:
+  - `handover/ops/TURINGOSV2_CONSTITUTION_AI_FRIENDLY_REWRITE_20260311.md`
+  - it now uses `WHITEBOX / BLACKBOX`
+  - it now explains the new Clockwork phases:
+    - initialization
+    - clocked map and read
+    - generate
+    - predicate product
+    - write and reduce
+    - finalization
+- The Rust-core constitutional audit has been refreshed against the new sealed source:
+  - `handover/ops/TURINGOSV2_RUST_KERNEL_BLACKBOX_WHITEBOX_AUDIT_20260311.md`
+  - fresh verdict: `FAIL AGAINST UPDATED FINAL CLOCKWORK CONSTITUTION`
+  - strongest preserved alignment:
+    - Rust still keeps BLACKBOX proposal suspended and prevents direct write of future world state
+    - `WorldState<QState>` still preserves the pure world triple
+  - strongest new gaps:
+    - no once-only `Init AI` law compiler path
+    - no explicit `clock`
+    - no `mr_map / mr_reduce`
+    - no full constitutional exile of `tools_other` into the bottom write path
+    - finalization is not yet a first-class constitutional phase
+- A new constitution-topology audit now exists and uses only the highest-order turingosv2 authorities:
+  - `bible/GROUNDHOG_SEALED_CONSTITUTION.md`
+  - the sealed user graph `Q_t -> rtool -> input -> delta -> output -> predicates -> wtool`, with abort returning to `Q_t`
+  - no legacy `/projects/turingos/topology.md` material was used
+  - audit record: `handover/ops/TURINGOSV2_CONSTITUTION_TOPOLOGY_ALIGNMENT_AUDIT_20260311.md`
+  - verdict: `PASS WITH FIXES`
+  - strongest positive finding: the Rust Groundhog kernel is closely aligned to the architect's corrected `wtool(<q_o,a_o> | tape_t, HEAD_t)` commit law
+  - strongest negative finding at audit time: the Python reference runtime still contained a latent invalid-proposal commit bypass and a live mutable `MachineState` leak across the black-box boundary
+  - follow-up remediation record: `handover/ops/TURINGOSV2_CONSTITUTION_TOPOLOGY_REMEDIATION_20260311.md`
+  - remediation status:
+    - the Python invalid-proposal commit bypass is now sealed
+    - the Python black-box boundary now receives a frozen state snapshot instead of a live mutable `MachineState`
+    - the theorem-bearing black-box input surface is now reduced to the sealed constitutional pair: frozen `q_t` plus `rtool(tape_t, HEAD_t)`
+    - Python and Rust no longer feed broadcasts, feedback, price hints, or `public_notes` into the black-box read boundary
+  - the remaining open constitutional drift is now narrower: Python still embodies `Q_t` in a split form instead of one physically closed snapshot object
+- The sealed mathematical constitution is confirmed to remain frozen at:
+  - `bible/GROUNDHOG_SEALED_CONSTITUTION.md`
+- A new AI-friendly constitutional rewrite now exists and intentionally avoids the `∘ / •` notation in all derived explanation:
+  - `handover/ops/TURINGOSV2_CONSTITUTION_AI_FRIENDLY_REWRITE_20260311.md`
+  - it rewrites the theorem with `WHITEBOX` / `BLACKBOX` terminology only
+  - it is explicitly a derived explanatory note and does not supersede the sealed source
+  - it now also preserves the explicit predicate-product reading instead of collapsing it into a generic “admission” label
+  - it now includes an exact Rust-syntax alignment section for:
+    - `WorldState<QState>`
+    - `UniverseSnapshot<QState>`
+    - `ReadView<QState>`
+    - `IntentEnvelope<QState>`
+    - `commit_snapshot(...)`
+- A fresh Rust-kernel-specific whitebox/blackbox audit now exists:
+  - `handover/ops/TURINGOSV2_RUST_KERNEL_BLACKBOX_WHITEBOX_AUDIT_20260311.md`
+  - current verdict: `PASS WITH INTERPRETIVE CAVEAT`
+  - exact current conclusion:
+    - the Rust kernel direction is constitutionally correct
+    - the compile-blocking `proposed_*` rename migration is complete and the Rust tree is green again
+    - the pure world triple now exists as `WorldState<QState>`
+    - lineage metadata is explicit as `SnapshotWitness`
+    - generic `halted` no longer persists inside the committed snapshot type
+    - theorem-bearing task truth now evaluates against `WorldState<QState>`, not the richer wrapper snapshot
+    - one interpretation caveat is now explicitly recorded:
+      - `ReadView<QState>.head` still exists in the implementation-facing read carrier
+      - under the strict constitutional reading, only `register + ReadTool_WHITEBOX(tape_t, HEAD_t)` is theorem-bearing input
+      - `head` must therefore be treated as implementation routing metadata, not as an additional BLACKBOX authority source
+  - fresh AgentOS audit findings:
+    - semantics line: proposal-side `IntentEnvelope` usage is now cleanly named `proposed_*`; committed-world `CommitRecord.next_*` remains intentionally unchanged
+    - Unix/OS line: no Rust commit-authority leak was found; abort/fault handling remains fail-closed
+    - math line: `PASS`
+    - topology line: `PASS`
+    - no material constitutional findings remain in the scoped Rust core files covered by that audit
+- A bounded pure-Rust slimming slice has now landed:
+  - record: `handover/ops/TURINGOSV2_RUST_SLIMMING_SLICE_20260311.md`
+  - `TaskContract` has been collapsed into `crates/turingos-kernel/src/task.rs`
+  - the shell crate `crates/turingos-task/` has been removed from the workspace
+  - replay scaffolding was not promoted into the kernel; it was removed because it was unused in the active tree
+  - the shared parity golden replay scaffold now lives at `tests/support/parity_golden.rs`, not under a fake crate path and not under another crate's private test tree
+  - the constitutional stage seams remain explicit:
+    - `read.rs`
+    - `task.rs`
+    - `predicate_gate.rs`
+    - `commit.rs`
+    - `run.rs`
+  - the Rust tree and Python tests remain green after the slice
+- A first Rust parity task-law slice has now landed:
+  - record: `handover/ops/TURINGOSV2_RUST_PARITY_TASK_LAW_SLICE_20260311.md`
+  - new crate: `crates/turingos-parity/`
+  - `ParityTask` is now embodied in trusted Rust as a task-law layer outside the generic kernel physics
+  - Rust now also owns the canonical parity bootstrap shape via `initial_world(...)` / `initial_snapshot(...)`
+  - a live Rust parity execution lane now exists in tests through `KernelEngine::run(...)`
+  - this does not yet retire Python `turingos/tasks/parity.py` from live runtime use
+  - but it does end Python's role as the only repository embodiment of parity white-box truth and the only live repository proof that parity can execute successfully
+  - validation remained green:
+    - `cargo test -p turingos-parity -q`
+    - `cargo test -q`
+    - `./.venv/bin/python -m pytest -q`
+- A bounded Python scope-reduction slice has now landed:
+  - record: `handover/ops/TURINGOSV2_PYTHON_SCOPE_REDUCTION_20260311.md`
+  - removed from the repo core:
+    - `turingos/oracle.py`
+    - `turingos/tools/terminal.py`
+    - `turingos/tools/__init__.py`
+    - `tests/test_oracle.py`
+    - `tests/test_terminal_tool.py`
+  - `turingos/cli.py` no longer carries the `oracle-demo` command
+  - the active Mission 002 benchmark/provider Python has now been cut out of the `turingos` package and moved to `harnesses/mission002_py/`
+  - `turingos/cli.py` still exposes `benchmark-mission002`, but now delegates to the external harness package instead of a `turingos.benchmarks.*` module
+  - setuptools package discovery now includes `harnesses*`, so the moved benchmark/provider package remains installable
+  - `turingos/cli.py` now lazy-imports the external Mission 002 harness registration, so `parity-demo` and other unrelated commands do not take a hard dependency on that package at module import time
+  - this slice was intentionally limited to pure demo/shell Python plus externalizable benchmark/provider Python, not theorem-bearing parity/runtime migration debt
+  - the Rust tree and remaining Python tests stayed green after the removal
+- A new constitutional interpretation note now exists for two recurring design questions:
+  - `handover/ops/TURINGOSV2_CONSTITUTIONAL_INTERPRETATION_LONG_HORIZON_AND_MULTIAGENT_20260311.md`
+  - it records the current reading that:
+    - the constitution already solves the physics of long-horizon non-drifting attention, but not yet the full one-million-step engineering proof
+    - the constitution already solves the safety boundary for multi-agent work, but not yet the full large-scale coordination protocol
+    - `∏ predicates` is the key asymmetry that turns large-scale intelligence into a cheap white-box admissibility problem rather than a demand for a perfect omniscient model
+- The AI-friendly constitutional rewrite and Rust-side explanatory notes now consistently use `WHITEBOX` / `BLACKBOX` language instead of symbolic `∘ / •` notation in derived implementation materials.
+- A new audited architecture decision record now exists for Python retirement:
+  - `handover/ops/TURINGOSV2_RUST_ONLY_MIGRATION_PLAN_20260311.md`
+  - conclusion:
+    - the long-term target should be a Rust-only white-box embodiment with external LLM APIs as black-box `delta`
+    - immediate deletion of Python is rejected as premature
+    - the next safe migration step is to port the parity task and live parity runtime lane into Rust before deleting Python runtime surfaces
+- A stricter audited blueprint now also exists after a second expert pass:
+  - `handover/ops/TURINGOSV2_RUST_ONLY_BLUEPRINT_AUDITED_20260311.md`
+  - Unix proposal and Karpathy proposal were both reviewed
+  - final synthesis:
+    - adopt the Unix universe/commit model
+    - adopt the Karpathy minimal-concept rule
+    - preserve `rtool`, `predicates`, `wtool`, and `abort` as explicit internal stages even if crates are later collapsed
+  - the blueprint is now further narrowed by a new project-identity boundary:
+    - `turingos` now refers to this `turingosv2` project
+    - parity checks, benchmark drivers, and real-world task drivers are not part of `turingos` itself
+    - those harnesses may be disposable Python written by LLMs at run time, but they remain outside the theorem-bearing repository core
+  - Unix and OS review now also converge on one interface rule:
+    - Rust should keep one narrow black-box `delta` seam for external LLMs
+    - Rust should also expose a stable white-box execution surface (`step/run/replay/inspect`) for external harnesses
+    - external harnesses should call the execution surface, not become part of the trusted core
+- `README.md` has now been rewritten to match that same boundary:
+  - `turingos` now explicitly means this `turingosv2` project
+  - `turingos` is defined as a constitution-bound white-box attention kernel, not a benchmark harness or task script collection
+  - the two primary application scenes are now written down explicitly:
+    - one agent holding attention over an extremely long project
+    - many agents advancing bounded work without drifting or directly contaminating the world state
+  - parity checks, benchmark runners, and real-world task drivers are explicitly described as external disposable harnesses rather than part of the theorem-bearing core
+  - a fresh constitution-only README re-audit has now returned `PASS`
+  - the final README wording now explicitly distinguishes:
+    - external orchestration / driver / packaging harnesses
+    - task white-box truth rules that, once authoritative for execution, must enter the `predicates` boundary
+- The current headline verified score has now moved beyond the earlier `1`-case ceiling:
+  - official `rung 3` run artifact: `benchmarks/mission002/mission002_dual_rung3_promptv9_mt768_20260310_1820UTC/`
+  - mode summary: `passed=3`, `failed=0`, `status=PASS`
+  - `case_000001`, `case_000002`, and `case_000003` all reached terminal `PASS`
+  - the first official rung-10 scored artifact is now `benchmarks/mission002/mission002_dual_rung10_promptv9_mt768_20260310_1943UTC/`
+  - rung-10 summary: `attempted=4`, `passed=3`, `failed=1`, `status=FAIL`
+  - the bounded case-4 repair artifact is now `benchmarks/mission002/mission002_dual_case4_promptv10_mt768_20260310_2326UTC/`
+  - bounded case-4 summary: `attempted=1`, `passed=1`, `failed=0`, `status=PASS`
+  - a fresh official rung-10 rerun under `mission002.prompt.v10` is now the next scored authority attempt
+  - the verified headline ceiling therefore remains `3`
+- AgentOS itself is now explicitly bound by the same data-led rule:
+  - `turingos_goal_poller` must base benchmark verdicts on compressed historical success/failure evidence
+  - the Groundhog execution loop now requires an evidence basis before promotion or next-stage movement
+  - child packets and child outputs now treat evidence basis as a first-class field for debug/rerun/promotion decisions
+  - AgentOS is now also explicitly scoped as the scaffolding/audit/promotion layer for `turingosv2` self-upgrade, not the intended permanent origin of upgrade intelligence
+  - the intended steady state is that AgentOS helps `turingosv2` stand up its own bounded project intelligence and then governs evidence-led promotion rather than permanently authoring upgrades itself
+- Mission 001 remains complete: the repo-level AgentOS, role specs, and child-role wiring are formalized and independently audited.
+- Mission 002 baseline and failure-learning artifacts remain preserved in `benchmarks/mission002/` and `handover/ops/MISSION_002_FAILURE_LEARNING.md`.
+- A new draft project spec now exists in `handover/ops/TURINGOSV2_1M_PRESSURE_TEST_SPEC_DRAFT.md`.
+- The draft pressure-test project keeps these boundaries fixed:
+  - historical `turingos` 1M material is learning-only
+  - current `turingosv2` parity runtime is the benchmark object
+  - standalone model baselines are not rerun
+  - the kernel remains unchanged
+- The planned headline runtime score is `turingosv2_planner27_worker9`; `turingosv2_single_27b` and `turingosv2_single_9b` remain diagnostic runtime sidecars.
+- Current resource note for the draft pressure-test project:
+  - the Mac model node currently has `32G` memory, so the first official wave should stay mode-serial and low-concurrency
+  - `windows1` may be opened later as an auxiliary concurrency node if the benchmark needs more worker capacity
+  - official headline runs on the current dual-lane topology are wall-clock expensive by construction:
+    - live evidence from the current Mac `llama.cpp` logs shows the `27B` lane currently taking about `45-48s` per request
+    - the `9B` lane currently takes about `13-14s` per request
+    - because the headline mode queries both lanes repeatedly, one parity case can legitimately take tens of minutes even when the whitebox state machine is healthy
+    - long wall-clock duration alone should therefore not be read as a kernel or topology bug; the first suspicion should be black-box inference cost or transport stall
+  - a new external-speed path is now prepared for diagnostic work:
+    - `turingos/agents/llama_openai.py` now supports both OpenAI-compatible chat-completions providers and Kimi Coding `messages` providers without touching kernel logic
+    - `handover/ops/TURINGOSV2_KIMI_SIDECAR_RUNBOOK.md` and `scripts/mission002_kimi_sidecar.sh` now define a Kimi Coding sidecar path for faster bounded diagnosis
+    - fresh probe status is now:
+      - the supplied Kimi key works on `https://api.kimi.com/coding/v1/models`
+      - the supplied Kimi key works on `https://api.kimi.com/coding/v1/messages`
+      - the same key fails on `https://api.moonshot.cn/v1/*` with `401 Invalid Authentication`
+      - the same key gets `403` on `https://api.kimi.com/coding/v1/chat/completions`
+    - the correct current integration path for this key is therefore Kimi Coding `messages`, with `model=kimi-for-coding`
+    - repo-local `.env` is now the preferred source for Kimi sidecar configuration
+    - one live `turingosv2` planner-step proposal has now been validated end-to-end through the Kimi Coding `messages` path
+    - the local `turingosv2_single_9b` lane remains the sparse control lane when model-versus-system attribution is unclear
+- The first approved live wave is now recorded under:
+  - `benchmarks/mission002/mission002_current_level_smoke_20260310_1049UTC/`
+  - `handover/ops/TURINGOSV2_1M_PRESSURE_TEST_WAVE1_LEARNING.md`
+- Wave 1 headline result:
+  - `turingosv2_planner27_worker9`: fail at step `3`, `wrong_register`
+  - `turingosv2_single_27b`: fail at step `3`, `wrong_register`
+  - `turingosv2_single_9b`: fail at step `2`, path/write/register/protected-file drift
+- Wave 1 stopped at the first rung exactly as the draft pressure-test spec requires; no deeper smoke ladder was attempted after the first semantic failures.
+- A non-kernel prompt/debug loop is now running under the fixed anti-hardcoding rule:
+  - `mission002.prompt.v2` moved the headline dual lane from the old step-`3` failure to a new step-`12` failure
+  - the new step-`12` drift is generic: while scanning `dir_01_89/dir_03_57/.ls`, both agents preserved the old pending item but omitted the newly discovered file `dir_01_89/dir_03_57/n_01_198.md`
+  - `mission002.prompt.v3` was tried next but regressed early to step `7`, showing that a longer wording change can damage numeric-file protocol following even when it helps the later `.ls` case
+  - `mission002.prompt.v4` removed the v3 regression and restored the deeper ceiling, but it did not beat `v2`; it failed again at step `12` with the same omitted-FILE drift
+  - `mission002.prompt.v5` then added one exact `.ls` queue-update worked example plus prompt-visible feedback dedupe, and the headline dual lane passed `case_000001` without changing the kernel or topology
+- Current prompt-loop artifacts:
+  - prior failed compactness probe: `benchmarks/mission002/mission002_dual_case1_promptv3_20260310_1127UTC/`
+  - restored-deeper-ceiling probe: `benchmarks/mission002/mission002_dual_case1_promptv4_20260310_1134UTC/`
+  - breakthrough probe: `benchmarks/mission002/mission002_dual_case1_promptv5_20260310_1202UTC/`
+  - current verified headline ceiling: `1` consecutive pass on the headline lane
+  - latest verified exact `PASS`: `case_000001` under `mission002.prompt.v5`
+  - mode: `turingosv2_planner27_worker9`
+  - latest attempted scored rung: `3`
+  - latest scored rung artifact: `benchmarks/mission002/mission002_dual_rung3_promptv5_20260310_133108UTC/`
+  - current live benchmark status: no active `benchmark-mission002` process at the moment
+- AgentOS now has an explicit target-supervision role for the `100`-pass objective:
+  - role: `turingos_goal_poller`
+  - it owns rung polling and `ADVANCE` / `HOLD` / `RERUN_SAME_RUNG` / `STOP_AND_DEBUG` verdicts
+  - it does not replace `turingos_runtime_watcher`, which remains process-health-only
+- The pressure-test project now also has an explicit self-upgrade split:
+  - `handover/ops/TURINGOSV2_SELF_UPGRADE_INNER_PROPOSER_SPEC_DRAFT.md`
+  - `handover/ops/TURINGOSV2_SELF_UPGRADE_OUTER_PROMOTION_SPEC_DRAFT.md`
+- This fixes the whitebox reading of the user's "let turingos upgrade itself" idea:
+  - `100` consecutive passes remains an outer promotion gate
+  - inner `turingos` may propose bounded non-kernel improvements
+  - only the outer AgentOS loop may promote, reject, rerun, or advance
+- The first active self-upgrade cycle has completed its first bounded repair loop:
+  - `rung 3` first failed on `case_000002` at step `2`
+  - failure law: same-scan frontier precedence inversion at the root `.ls`
+  - bounded fix: `mission002.prompt.v6`
+  - bounded rerun artifact: `benchmarks/mission002/mission002_dual_case2_promptv6_20260310_140815UTC/`
+  - `v6` repaired the original step-`2` failure and pushed the same case to a new failure at step `13`
+  - the new step-`13` drift is in `phase=apply_pending` on `parity.md`, where `planner27` diverged from the required transition while `worker9` produced the expected `next_path=todo[0]`
+  - current outer-loop status remains `STOP_AND_DEBUG`, not `ADVANCE`
+- The second bounded repair loop has completed:
+  - bounded fix: `mission002.prompt.v7`
+  - bounded rerun artifact: `benchmarks/mission002/mission002_dual_case2_promptv7_20260310_1450UTC/`
+  - `v7` preserved the repaired step-`2` behavior and repaired the old step-`13` `apply_pending` drift
+  - the failure front moved further to step `15`
+  - the new step-`15` failure is a split fault:
+    - `planner27` now carries the semantically richer `.ls` update, but its JSON is truncated before completion and gets parsed as `../invalid_transition`
+    - `worker9` remains parseable but omits the newly discovered `FILE` entries from the current `.ls` batch
+  - current outer-loop status remains `STOP_AND_DEBUG`, because the verified headline ceiling is still `1`
+  - current live benchmark status: no active `benchmark-mission002` process at the moment
+- The third bounded repair loop has completed:
+  - bounded fix: `mission002.prompt.v8` plus declared bounded rerun `max_tokens=768`
+  - bounded rerun artifact: `benchmarks/mission002/mission002_dual_case2_promptv8_mt768_20260310_1709UTC/`
+  - `v8` repaired the old step-`15` split fault and moved the failure front further to step `16`
+  - the new step-`16` fault is now on a numeric-file scan:
+    - `planner27` keeps the correct scan shape but computes the wrong parity bit for `dir_00_27/dir_03_80/n_05_666.md`
+    - `worker9` computes the bit differently but illegally performs the `apply_pending` write one phase too early
+  - current outer-loop status remains `STOP_AND_DEBUG`, because the verified headline ceiling is still `1`
+- The fourth bounded repair loop has now produced the first official scored promotion:
+  - bounded fix: `mission002.prompt.v9` plus retained `max_tokens=768`
+  - bounded rerun artifact: `benchmarks/mission002/mission002_dual_case2_promptv9_mt768_20260310_1746UTC/`
+  - `v9` repaired the old step-`16` numeric-scan split fault and passed `case_000002`
+  - official scored rung artifact: `benchmarks/mission002/mission002_dual_rung3_promptv9_mt768_20260310_1820UTC/`
+  - the official headline lane then completed `3/3` consecutive passes with exact `PASS`
+  - the verified headline ceiling is now `3`
+  - the next official scored action was `rung 10`, not another bounded repair on the first three cases
+- The first official rung-10 scored run has now produced the next first-fail corpus:
+  - scored artifact: `benchmarks/mission002/mission002_dual_rung10_promptv9_mt768_20260310_1943UTC/`
+  - `case_000001`, `case_000002`, and `case_000003` all passed under the unchanged kernel and unchanged topology
+  - first semantic failure arrived at `case_000004`
+  - failure reason: `no valid proposal at step 15`
+  - compressed failure law:
+    - whitebox expected the `.ls` scan at `dir_01_31/dir_02_30/.ls` to enqueue the discovered file `dir_01_31/dir_02_30/n_02_536.md` and move `HEAD` there
+    - the accepted lane instead attempted to jump back to `parity.md`, with a divergent `next_register`
+  - current outer-loop status should therefore remain `STOP_AND_DEBUG`, not `ADVANCE`
+- The `case_000004` corpus has now produced one completed evidence-compressed repair loop:
+  - shared evidence packet: `handover/ops/TURINGOSV2_RUNG10_CASE4_EVIDENCE_PACKET.md`
+  - AgentOS teams reviewed the same packet and converged on one bounded repair class:
+    - keep the fix on the prompt/test surface
+    - strengthen the generic `.ls` recomputed-todo law
+    - add one terminal-frontier worked example without case-specific special-casing
+  - prompt contract is now `mission002.prompt.v10`
+  - bounded rerun artifact: `benchmarks/mission002/mission002_dual_case4_promptv10_mt768_20260310_2326UTC/`
+  - bounded rerun result: `attempted=1`, `passed=1`, `failed=0`, `status=PASS`
+  - the next scored action is a full official `rung 10` rerun under `mission002.prompt.v10`, not another case-local bounded probe
+- A reusable good-work pattern is now recorded for this repair class:
+  - `handover/ops/TURINGOSV2_PARITY_PROTOCOL_LAW_FOUR_LAYER_SOLIDIFICATION.md`
+  - the compressed failure law was solidified across four layers:
+    - whitebox truth in `turingos/tasks/parity.py`
+    - blackbox contract in `turingos/agents/mission002_prompting.py`
+    - regression lock in `tests/test_mission002_prompting.py`
+    - authority-bearing evidence in `handover/ops/TURINGOSV2_RUNG10_CASE4_EVIDENCE_PACKET.md`
+  - this is now the preferred pattern for non-kernel protocol-law repairs on the parity pressure-test lane
+- `handover/ops/ACTIVE_MISSION_CHARTER.md` now points to Mission Groundhog.
+- The immutable constitutional source for Groundhog is now `bible/GROUNDHOG_SEALED_CONSTITUTION.md`.
+- `handover/ops/MISSION_GROUNDHOG_CONSTITUTION_INDEX.md` now defines the freeze rules and authority order for the sealed constitution.
+- `handover/ops/MISSION_GROUNDHOG_IMPLEMENTATION_GUARDRAILS.md` now fixes the Groundhog engineering constraints:
+  - Rust-first implementation
+  - Unix systems discipline
+  - Karpathy-style simplification and code taste
+- `handover/ops/MISSION_GROUNDHOG_TEAM.md` now defines the Groundhog specialist team and chemistry rules.
+- Groundhog now also has an explicit recursive-audit pair at the end of every stage:
+  - `groundhog_recursive_math_auditor`
+  - `turingos_recursive_software_auditor`
+- `handover/ops/MISSION_GROUNDHOG_PROJECT_SPEC.md` now defines the project-level spec.
+- `handover/ops/MISSION_GROUNDHOG_EXECUTION_LOOP.md` now fixes the required stage loop:
+  - stage spec
+  - human confirmation or explicit autonomous progression window
+  - execution
+  - audit
+  - retrospective
+  - next-stage spec proposal
+- Phase 1 is now fully closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_001_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_001_ARCHITECTURE_PACKET.md` is completed with audit PASS
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_001_CLOSEOUT.md` records the normalized stage-close PASS
+- Phase 2 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_002_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_002_CLOSEOUT.md` records the normalized stage-close PASS
+- Phase 3 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_003_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_003_CLOSEOUT.md` records the normalized stage-close PASS
+- Phase 4 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_004_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_004_CLOSEOUT.md` records the normalized stage-close PASS
+- Phase 5 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_005_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_005_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 5 proved the first bounded theorem-bearing single-step cycle:
+  - `KernelEngine::step(...)` now connects `ReadView -> adapter.propose -> predicate gate -> commit/abort`
+  - `crates/turingos-kernel/src/driver.rs` defines `StepDriverOutcome`
+  - adapter-local faults remain outside commit authority
+  - reject-side results now use one explicit abort-side object
+  - adapter provenance is now observational only and no longer mints kernel commit tips
+  - local validation passed after the final Phase 5 seam cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 5 audit ring returned `PASS`
+- Phase 6 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_006_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_006_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Groundhog now also has a stable Gemini operating policy in `handover/ops/GEMINI_GROUNDHOG_OPERATING_POLICY.md`.
+- Phase 6 proved the first bounded observation/report seam:
+  - `crates/turingos-core/src/observation.rs` defines `StepObservation`
+  - `crates/turingos-adapter/src/boundary.rs` now returns observed proposals or observed failures
+  - `crates/turingos-kernel/src/driver.rs` now carries observation-side metadata alongside step outcomes
+  - live `model_provenance` has been removed from `IntentEnvelope`
+  - local validation passed after the final Phase 6 provenance extraction:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 6 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS WITH FIXES`
+- Phase 7 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_007_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_007_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 7 simplified the observation/report seam by:
+  - replacing `AdapterReport + AdapterResult` with one `AdapterOutcome`
+  - reducing `StepObservation` to a plain `provenance` carrier
+  - making the kernel/provider seam trait-object-safe through both `KernelEngine::step(...)` and `PredicateGate::evaluate(...)`
+  - proving adapter faults short-circuit before predicate evaluation
+- Phase 8 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_008_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_008_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 8 proved the first bounded multi-step run surface:
+  - `crates/turingos-kernel/src/run.rs` now defines `RunOutcome`, `CommittedStep`, `HaltStatus`, and `RunStop`
+  - already halted snapshots short-circuit without entering `KernelEngine::step(...)`
+  - `RunOutcome::committed_steps` now preserves committed history across `Halted`, `Abort`, `AdapterFault`, and `StepBudgetExhausted`
+  - halted exits now use one single `RunStop::Halted` shape
+  - local validation passed after the final history and stop-shape cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 8 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 9 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_009_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_009_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 9 proved the first canonical read-only run-report surface:
+  - `crates/turingos-kernel/src/report.rs` now defines borrowed `RunReport<'a, QState>` and `RunReportStop<'a, QState>`
+  - report construction is now a projection over `RunOutcome` rather than a second owned truth shape
+  - `RunReport::terminal_snapshot()` now unifies terminal snapshot observation across all `RunStop` variants
+  - `RunOutcome::report()` now provides the narrow helper path into the borrowed report view
+  - local validation passed after the final borrowed-report redesign:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 9 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 10 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_010_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_010_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 10 proved the first detached owned run-export surface:
+  - `crates/turingos-observe/src/run_export.rs` now defines `RunExport<QState>` and `RunExportStop<QState>`
+  - `RunExport` is now constructed only from borrowed `RunReport<'_, QState>`
+  - the direct `RunOutcome -> RunExport` bypass was removed during the audit loop
+  - local validation passed after the final export-seam cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 10 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 11 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_011_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_011_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 11 proved the first compact observer-side summary surface:
+  - `crates/turingos-observe/src/run_summary.rs` now defines borrowed `RunSummary<'a, QState>` and `RunSummaryStopClass`
+  - `RunSummary` now borrows `RunExport` rather than minting a second owned observer packet
+  - stop kind and halt status are now explicitly separated:
+    - `stop_class()`
+    - `halt_status()`
+    - `is_success()`
+  - local validation passed after the final stop-kind / halt-status cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 11 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 12 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_012_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_012_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 12 proved the first observer-side progress-delta surface:
+  - `crates/turingos-observe/src/run_delta.rs` now defines `CountDelta` and `RunDelta`
+  - `terminal_step` now uses `StepDelta` so step-index movement is no longer collapsed into a generic count bucket
+  - the delta layer compares two successive `RunSummary` views without opening polling loops or daemon logic
+  - the initial delta tests now cover:
+    - no change
+    - forward progress
+    - stop-class transition
+    - halt-status transition inside the same stop kind
+    - exact regression without policy
+  - local validation is green:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 12 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 13 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_013_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_013_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 13 proved the first canonical observer-side poll-sample surface:
+  - `crates/turingos-observe/src/run_sample.rs` now defines borrowed `RunSample<'a, QState>`
+  - the sample layer packages:
+    - current `RunSummary`
+    - optional `RunDelta`
+  - public construction is now compressed to:
+    - `RunExport::sample()`
+    - `RunExport::sample_after(...)`
+  - `RunSample` accessors now return lightweight values by value rather than extra borrow wrappers
+  - local validation passed after the final API and provenance cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `/home/zephryj/.cargo/bin/cargo test -p turingos-observe` (supplemental focused check)
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 13 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 14 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_014_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_014_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 14 proved the first compact detached comparison basis:
+  - `crates/turingos-observe/src/run_basis.rs` now defines detached `RunBasis`
+  - the basis stores only exact delta-relevant facts:
+    - attempted step count
+    - committed step count
+    - terminal step
+    - stop class
+    - halt status
+  - derivation and comparison paths now include:
+    - `RunSummary::basis()`
+    - `RunExport::basis()`
+    - `RunDelta::between_basis(...)`
+    - `RunExport::sample_after_basis(...)`
+  - local validation passed after the final coverage and simplification cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 14 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 15 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_015_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_015_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 15 proved the first detached current poll packet:
+  - `crates/turingos-observe/src/run_pulse.rs` now defines detached `RunPulse`
+  - the pulse layer packages:
+    - current `RunBasis`
+    - optional `RunDelta`
+  - detached current-poll packet paths now include:
+    - `RunExport::pulse()`
+    - `RunExport::pulse_after_basis(...)`
+  - public overlap with borrowed `RunSample` was trimmed during the audit loop
+  - local validation passed after the final API cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 15 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 16 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_016_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_016_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 16 proved the first deterministic pulse-classification surface:
+  - `crates/turingos-observe/src/run_pulse_class.rs` now defines:
+    - `RunPulseClass`
+    - `RunPulseTransitionClass`
+    - `RunPulseTerminalClass`
+  - `RunPulse::class()` now derives one compact macro-state classification from pulse facts only
+  - the final classifier shape now includes:
+    - `Progressed`
+    - `Regressed`
+    - `TerminalReclassified`
+  - pulse-level helper overlap was trimmed during the audit loop:
+    - `RunPulse` no longer exposes `has_delta()`
+    - `RunPulse` no longer exposes `has_any_change()`
+  - local validation passed after the final classifier cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 16 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 17 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_017_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_017_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 17 proved the first compact detached classified poll-frame surface:
+  - `crates/turingos-observe/src/run_pulse_frame.rs` now defines detached `RunPulseFrame`
+  - `RunExport` now exposes:
+    - `pulse_frame()`
+    - `pulse_frame_after_basis(...)`
+  - `RunPulseFrame` now packages:
+    - detached `RunPulse`
+    - derived `RunPulseClass`
+  - the final frame surface stayed intentionally thin:
+    - `pulse()`
+    - `class()`
+  - local validation passed after the final frame cleanup:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 17 audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Phase 18 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_018_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_018_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 18 proved one direct basis-carry seam on `RunPulseFrame`:
+  - `crates/turingos-observe/src/run_pulse_frame.rs` now exposes:
+    - `basis()`
+  - the active seam remains exactly:
+    - detached `RunPulseFrame`
+    - exact current `RunBasis` already carried by `RunPulse`
+  - the rejected detached handoff wrapper remains historical only and does not survive in product code
+  - the final seam is explicitly proven not to create parallel truth:
+    - `pulse_frame_basis_is_exact_current_basis_without_parallel_truth`
+    - `std::ptr::eq(frame.basis(), frame.pulse().current())`
+  - local validation passed after the final reformulation and audit fix loop:
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+    - `/home/zephryj/.cargo/bin/cargo test -p turingos-observe`
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `./.venv/bin/python -m pytest -q`
+  - the required Phase 18 audit ring returned `PASS`
+  - `handover/ai-direct/entries/20260310_083359UTC_groundhog_phase018_validation_and_supersession.md` is the latest historical validation record for the reformulated slice
+  - `handover/ai-direct/entries/20260310_085921UTC_groundhog_phase018_closeout_and_phase019_opening.md` records the normalized closeout and next-stage opening
+- Phase 19 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_019_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_019_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 19 proved the first real Rust integration harness above the current theorem cycle:
+  - `crates/turingos-observe/tests/run_cycle_fixture.rs` drives real runs through:
+    - `KernelEngine::run(...)`
+    - `RunReport`
+    - `RunExport`
+    - `RunSummary`
+    - `RunPulseFrame`
+  - the harness covers:
+    - one halted-success run
+    - one abort run
+    - one cross-run basis carry comparison
+  - the harness directly asserts:
+    - `RunReport` facts on real runs
+    - `RunExport` facts on real runs
+    - derived observer facts
+  - fresh Gemini Phase 19 audit lanes returned `PASS` with observed model string:
+    - `gemini-3.1-pro-preview`
+  - the required software lanes also returned `PASS`
+  - `handover/ai-direct/entries/20260310_091711UTC_groundhog_phase019_closeout_and_phase020_opening.md` records the normalized closeout and next-stage opening
+- Phase 20 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_020_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_020_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 20 proved the first deterministic parity golden-replay lane:
+  - `crates/turingos-kernel/tests/fixtures/parity_deterministic.json` freezes one normalized deterministic parity history
+  - `crates/turingos-kernel/tests/parity_golden_replay.rs` replays that history through `KernelEngine::run(...)`
+  - the fixture records Python source provenance and capture basis so the lane is treated as a frozen replay anchor rather than a live equivalence proof
+  - the required Phase 20 software and Gemini lanes returned `PASS`
+  - one recursive-math run that observed `gemini-2.5-pro` was discarded as non-authoritative, and the counted verdict was rerun after a `gemini-3.1-pro-preview` probe
+  - `handover/ai-direct/entries/20260310_093645UTC_groundhog_phase020_closeout_and_phase021_opening.md` records the normalized closeout and next-stage opening
+- Phase 21 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_021_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_021_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 21 proved the first parity-shaped observer acceptance harness:
+  - `tests/support/parity_golden.rs` now holds the shared repo-level test-only parity replay scaffold
+  - `crates/turingos-kernel/tests/parity_golden_replay.rs` and `crates/turingos-observe/tests/parity_projection_fixture.rs` now consume the same frozen replay scaffold
+  - the observer lane proves faithful projection through:
+    - `RunReport`
+    - `RunExport`
+    - `RunSummary`
+    - `RunPulseFrame`
+  - the required Phase 21 software and Gemini lanes returned `PASS`
+  - `handover/ai-direct/entries/20260310_101232UTC_groundhog_phase021_closeout_and_phase022_opening.md` records the normalized closeout and next-stage opening
+- Phase 22 is now closed:
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_022_SPEC_DRAFT.md` is completed and frozen
+  - `handover/ops/MISSION_GROUNDHOG_PHASE_022_CLOSEOUT.md` records the normalized stage-close `PASS`
+- Phase 22 proved the first repo-level parity formal test gate:
+  - `scripts/groundhog_parity_formal_test.sh` now provides one bounded project entrypoint
+  - the gate sequences:
+    - `cargo test -p turingos-kernel --test parity_golden_replay`
+    - `cargo test -p turingos-observe --test parity_projection_fixture`
+    - `./.venv/bin/python -m pytest -q tests/test_parity_runtime.py`
+  - the required Phase 22 software and Gemini lanes returned `PASS`
+  - `handover/ai-direct/entries/20260310_102124UTC_groundhog_phase022_closeout_ready_for_formal_test.md` records the normalized closeout and readiness boundary
+- The project has now reached the current formal-test boundary for real `turingos` parity project pressure.
+- Groundhog Gemini work is pinned by policy to `Gemini 3.1 Pro Preview`.
+- Current environment note:
+  - `/usr/bin/python3` still has no `pip`, so host-global Python is not the reliable path.
+  - the repo-local test path is now repaired through `uv` + `.venv`
+  - the verified command is `./.venv/bin/python -m pytest -q`
+  - Rust toolchain preflight is now satisfied:
+  - `cargo 1.94.0`
+  - `rustc 1.94.0`
+  - the opened Rust validation commands are:
+    - `/home/zephryj/.cargo/bin/cargo test`
+    - `/home/zephryj/.cargo/bin/cargo fmt --check`
+- Phase 4 final code state:
+  - `Cargo.toml` workspace opened
+  - `crates/turingos-core/` opened
+  - `crates/turingos-kernel/` opened
+  - `crates/turingos-task/` opened
+  - `crates/turingos-adapter/` opened
+  - adapter boundary now yields adapter-local failure or `IntentEnvelope`
+  - fixture support is test-only and not part of the public adapter API
+  - local `cargo test` passed
+  - local `cargo fmt --check` passed
+  - repo guard `./.venv/bin/python -m pytest -q` passed
+  - the required audit ring returned `PASS`
+  - the advisory Karpathy lane returned `PASS`
+- Gemini operating note:
+  - Groundhog Gemini work continues to use headless `gemini -p`
+  - the new durable research note is `handover/ops/GEMINI_CLI_MULTI_AGENT_RESEARCH_20260310.md`
+  - the stable operating policy is now `handover/ops/GEMINI_GROUNDHOG_OPERATING_POLICY.md`
+  - the user-level Gemini settings are now pinned at `~/.gemini/settings.json` with:
+    - `model.name = "gemini-3.1-pro-preview"`
+  - the verified model-identity probe is now:
+    - `/usr/bin/gemini --output-format text -p 'State the exact active model id for this session and nothing else.'`
+  - the latest observed result is:
+    - `gemini-3.1-pro-preview`
+  - current local evidence shows successful `gemini-3.1-pro-preview` audits can stay silent for `95s+` on this Google Cloud VM and still complete normally
+  - current local evidence also shows that a one-off headless probe can transiently return `gemini-2.5-pro` even while `~/.gemini/settings.json` still pins `gemini-3.1-pro-preview`
+  - authority-bearing Gemini audits now use a bounded pre-audit probe retry window before counting a verdict
+  - the preferred Groundhog command form on this VM is now:
+    - `/usr/bin/gemini --output-format stream-json -p "<role packet>"`
+  - the user-wrapper command is now explicitly non-preferred for Groundhog:
+    - `~/.local/bin/gemini`
+    - it injects `--model gemini-3.1-pro-preview` and can trigger the known payload bug
+  - current diagnosis rule is:
+    - treat silence as ambiguous until native session artifacts and process state say otherwise
+  - explicit `--model gemini-3.1-pro-preview` remains non-preferred in this environment because Gemini CLI can still emit the known payload bug:
+    - `Invalid JSON payload received. Unknown name "model": Proto field is not repeating, cannot start list.`
+
+## Available Child Roles
+
+- `turingos_plan`
+- `turingos_coder`
+- `turingos_rust_systems_architect`
+- `turingos_rust_coder`
+- `turingos_os_system_planner`
+- `turingos_git_historian`
+- `turingos_karpathy_editor`
+- `turingos_recursive_software_auditor`
+- `turingos_quality_auditor`
+- `turingos_researcher`
+- `turingos_runtime_watcher`
+
+## External Gemini Roles
+
+- `turing_agi_architect_auditor`
+- `groundhog_math_constitution_custodian`
+- `groundhog_formal_methods_auditor`
+- `groundhog_turing_machine_theorist`
+- `groundhog_recursive_math_auditor`
+
+## Recommended Next Step
+
+- Use `handover/ops/TURINGOSV2_1M_PRESSURE_TEST_WAVE1_LEARNING.md` and the Wave 1 raw artifacts as the authority corpus for the next non-kernel prompt/adapter improvement pass, then rerun case `000001` before reopening the `3` and `10` gates.

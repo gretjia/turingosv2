@@ -23,6 +23,10 @@ class TuringOSConfig:
     ledger_filename: str = "ledger.jsonl"
     abort_on_no_valid_proposal: bool = True
 
+    def __post_init__(self) -> None:
+        if not self.abort_on_no_valid_proposal:
+            raise ValueError("abort_on_no_valid_proposal must remain True under the sealed constitution")
+
 
 @dataclass(slots=True)
 class TuringOSKernel:
@@ -54,14 +58,10 @@ class TuringOSKernel:
         assert self.state is not None
         assert self.fs is not None
         current_content = self.fs.read_text(self.state.current_path)
-        public_messages, private_messages = self.broadcasts.visible_to(agent_id)
         return self.masking.build_view(
             agent_id=agent_id,
             state=self.state,
             current_content=current_content,
-            public_messages=public_messages,
-            private_messages=private_messages,
-            price_stats=self.board.stats.get(agent_id),
         )
 
     def _evaluate_proposals(self) -> list[EvaluatedProposal]:
@@ -141,7 +141,7 @@ class TuringOSKernel:
         assert self.state is not None
         evaluated = self._evaluate_proposals()
         chosen = self.scheduler.select(evaluated, self.board)
-        if self.config.abort_on_no_valid_proposal and not chosen.signals.hard_pass:
+        if not chosen.signals.hard_pass:
             reasons = "; ".join(chosen.signals.hard_fail_reasons)
             raise RuntimeError(f"no valid proposal at step {self.state.step}: {reasons}")
         self._record_feedback(evaluated, chosen)

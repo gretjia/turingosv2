@@ -1,0 +1,9 @@
+[workspace]
+members = [
+  "crates/turingos-core",
+  "crates/turingos-kernel",
+  "crates/turingos-adapter",
+  "crates/turingos-observe",
+  "crates/turingos-parity",
+]
+resolver = "2"

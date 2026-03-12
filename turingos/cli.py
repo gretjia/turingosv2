@@ -8,7 +8,6 @@ from pathlib import Path
 
 from .agents.parity import DeterministicPolicyAgent, NoisyPolicyAgent
 from .models import AgentView
-from .oracle import RalphLoop
 from .runtime import TuringOSConfig, TuringOSKernel
 from .tasks.parity import ParityTask
 
@@ -51,20 +50,12 @@ def run_parity_demo(args: argparse.Namespace) -> int:
     return 0 if result.success else 1
 
 
-def run_oracle_demo(args: argparse.Namespace) -> int:
-    target = args.target
-    loop = RalphLoop[int](max_attempts=args.max_attempts, rng=random.Random(args.seed))
-
-    def generator(rng: random.Random) -> int:
-        # biased around the answer but still stochastic
-        return max(0, int(rng.gauss(target, args.stddev)))
-
-    def verifier(candidate: int) -> bool:
-        return candidate == target
-
-    result = loop.solve(generator, verifier)
-    print(json.dumps({"accepted": result.accepted, "attempts": result.attempts, "candidate": result.candidate}, ensure_ascii=False, indent=2))
-    return 0 if result.accepted else 1
+def _register_optional_mission002_cli(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
+    try:
+        from harnesses.mission002_py.mission002 import register_cli as register_mission002_cli
+    except ModuleNotFoundError:
+        return
+    register_mission002_cli(subparsers)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -81,12 +72,7 @@ def build_parser() -> argparse.ArgumentParser:
     parity.add_argument("--clean", action="store_true")
     parity.set_defaults(func=run_parity_demo)
 
-    oracle = sub.add_parser("oracle-demo", help="run a tiny Ralph-loop demo")
-    oracle.add_argument("--target", type=int, default=17)
-    oracle.add_argument("--max-attempts", type=int, default=64)
-    oracle.add_argument("--stddev", type=float, default=5.0)
-    oracle.add_argument("--seed", type=int, default=7)
-    oracle.set_defaults(func=run_oracle_demo)
+    _register_optional_mission002_cli(sub)
 
     return parser
 
